@@ -10,9 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    var counter = 0 {
+        didSet {
+            updateTextColor()
+        }
+    }
+    
+    @IBOutlet weak var counterLabel: UILabel!
+    
+    @IBAction func decrementLabel(_ sender: Any) {
+        counter -= 1
+    }
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        counter += 1
+    }
+    
+    func updateTextColor() {
+        counterLabel.text = "🧒\(counter)"
+        if counter % 5 == 0 {
+            counterLabel.textColor = UIColor.green
+        } else {
+            counterLabel.textColor = UIColor.blue
+        }
     }
 
 
